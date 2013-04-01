@@ -5,8 +5,14 @@ div.content
             p 
               form(name='form-testdoc', method='POST', action='/posts').form
                 input(type='hidden', name='_method', value='POST')
-                label Test Doc:
+                label Name:
                 input(name='doc', type='text', id='doc')
-                span.help-block Enter a new test doc for the test database
+                label Type:
+                input(name='doc', type='text', id='type')
+                label Description:
+                input(name='doc', type='text', id='descr')
+                label In Support of:
+                input(name='doc', type='text', id='support')
+                span.help-block Enter Cause Details
                 button(type='submit').btn Submit
                   

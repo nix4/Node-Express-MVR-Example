@@ -1,10 +1,12 @@
-module.exports = function(app, express, mongoose){
+module.exports = function(app, express, requireAuth, mongoose){
 
   var config = this;
 
-  app.requireAuth = false;
+  app.requireAuth = requireAuth;
+  app.settings = {};
+  app.settings.APP_TITLE = "UNZAGiver";
 
-  //generic config
+        //generic config
   app.configure(function(){
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
@@ -21,14 +23,14 @@ module.exports = function(app, express, mongoose){
   app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
-    app.mongoose.connect('mongodb://localhost/nodemvr');
+    //app.mongoose.connect('mongodb://localhost/nodemvr');
   });
 
   app.configure('production', function(){
     app.use(express.errorHandler());
 
     //app.mongoose.connect('mongodb://flame.mongohq.com:27087/nodemvr');
-    app.mongoose.connect('mongodb://localhost/nodemvr');
+    //app.mongoose.connect('mongodb://localhost/nodemvr');
   });
 
   return config;
